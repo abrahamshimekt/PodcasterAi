@@ -1,3 +1,6 @@
+import { SoundModel } from "@/types";
+
+export const BASE_URL="http://localhost:3000";
 export const sidebarLinks = [
     {
       imgURL: "/icons/home.svg",
@@ -96,3 +99,29 @@ export const sidebarLinks = [
         "https://beaming-shark-99.convex.cloud/api/storage/4d972f47-f1f5-4166-9eb4-f03682320474",
     },
   ];
+
+
+  // Represents a sound model with its name and URL
+
+// An array of predefined sound models
+const SOUND_MODELS: SoundModel[] = [
+  {
+    name: "Facebook - Fastspeech2",
+    url: "https://api-inference.huggingface.co/models/facebook/fastspeech2-en-ljspeech",
+  },
+  {
+    name: "ESPNET - Ljspeech",
+    url: "https://api-inference.huggingface.co/models/espnet/kan-bayashi_ljspeech_vits",
+  },
+  {
+    name: "Speechbrain - Ljspeech",
+    url: "https://api-inference.huggingface.co/models/speechbrain/tts-tacotron2-ljspeech",
+  },
+  {
+    name: "Voicemod - Fastspeech2",
+    url: "https://api-inference.huggingface.co/models/Voicemod/fastspeech2-en-male1",
+  },
+];
+
+// Export the array of sound models
+export default SOUND_MODELS;
