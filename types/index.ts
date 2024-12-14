@@ -1,7 +1,4 @@
-/* eslint-disable no-unused-vars */
-
 import { Dispatch, SetStateAction } from "react";
-
 import { Id } from "@/convex/_generated/dataModel";
 
 export interface EmptyStateProps {
@@ -68,6 +65,10 @@ export interface GenerateThumbnailProps {
   setImagePrompt: Dispatch<SetStateAction<string>>;
 }
 
+export interface SoundModel {
+  name: string; 
+  url: string;  
+}
 export interface LatestPodcastCardProps {
   imgUrl: string;
   title: string;
