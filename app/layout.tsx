@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import ConvexClerkProvider from "./providers/convexClerkProvider";
+import ConvexClerkProvider from "../providers/convexClerkProvider";
 export const metadata: Metadata = {
   title: "Podcaster",
   description: "Generate you podcasts using AI",
