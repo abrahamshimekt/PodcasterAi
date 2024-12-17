@@ -101,7 +101,7 @@ const CreatePodcast = () => {
 
   return (
     <section className="mt-10 flex flex-col">
-      <h1 className="text-20 font-bold text-white-1">create podcast</h1>
+      <h1 className="text-20 font-bold text-white-1">Create Podcast</h1>
 
       <Form {...form}>
         <form
@@ -200,7 +200,7 @@ const CreatePodcast = () => {
             <div className="mt-10 w-full">
               <Button
                 type="submit"
-                className="text-16 w-full bg-orange-1 py-4 font-extrabold text-white-1 transition-all duration-500 hover:bg-black-1"
+                className="text-16 w-full bg-orange-1 hover:!bg-orange-600 py-4 font-extrabold text-white-1 transition-all duration-500"
               >
                 {isSubmitting ? (
                   <>
