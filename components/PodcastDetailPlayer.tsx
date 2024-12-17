@@ -7,6 +7,7 @@ import { Button } from "./ui/button";
 import { useMutation } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import { useToast } from "@/hooks/use-toast";
+import { useAudio } from "@/providers/AudioProvider";
 
 const PodcastDetailPlayer = ({
   audioUrl,
@@ -22,7 +23,7 @@ const PodcastDetailPlayer = ({
 }: PodcastDetailPlayerProps) => {
   const router = useRouter();
   const [isDeleting, setisDeleting] = useState(false);
-//   const {setAudio} = useAudio()
+  const { setAudio } = useAudio();
   const { toast } = useToast();
   const deletePodcast = useMutation(api.podcasts.deletePodcast);
   const handleDelete = async () => {
@@ -36,11 +37,15 @@ const PodcastDetailPlayer = ({
       toast({ title: "Error deleting podcast", variant: "destructive" });
     }
   };
-  const handlePlay = ()=>{
-    // setAudio({
-
-    // })
-  }
+  const handlePlay = () => {
+    setAudio({
+      title: podcastTitle,
+      audioUrl,
+      imageUrl,
+      author,
+      podcastId,
+    });
+  };
   return (
     <div className="mt-6 flex w-full justify-between max-md:justify-center ">
       <div className="flex flex-col gap-8 max-md:items-center md:flex-row">
@@ -72,7 +77,10 @@ const PodcastDetailPlayer = ({
               <h2 className="text-16 font-normal text-white-1">{author}</h2>
             </figure>
           </article>
-          <Button className="text-16 w-full max-w-[250px] bg-orange-1 hover:!bg-orange-600 font-extrabold text-white-1">
+          <Button
+            className="text-16 w-full max-w-[250px] bg-orange-1 hover:!bg-orange-600 font-extrabold text-white-1"
+            onClick={handlePlay}
+          >
             <Image
               src="/icons/Play.svg"
               width={20}
@@ -94,7 +102,10 @@ const PodcastDetailPlayer = ({
             onClick={() => setisDeleting((prev) => !prev)}
           />
           {isDeleting && (
-            <div className="absolute -left-32 -top-2 z-10 flex w-32 cursor-pointer justify-center gap-2 rounded-md bg-black-6 py-1.5 hover:bg-black-2">
+            <div
+              className="absolute -left-32 -top-2 z-10 flex w-32 cursor-pointer justify-center gap-2 rounded-md bg-black-6 py-1.5 hover:bg-black-2"
+              onClick={handleDelete}
+            >
               <Image
                 src="/icons/delete.svg"
                 width={16}
