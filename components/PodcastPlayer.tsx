@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import {  useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { formatTime } from "@/lib/formatTime";
 import { cn } from "@/lib/utils";
@@ -15,7 +15,7 @@ const PodcastPlayer = () => {
   const [duration, setDuration] = useState(0);
   const [isMuted, setIsMuted] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
-  const { audio,setAudio ,closePlayer,setClosePlayer } = useAudio();
+  const { audio, setAudio, closePlayer, setClosePlayer } = useAudio();
 
   const togglePlayPause = () => {
     if (audioRef.current?.paused) {
@@ -111,7 +111,10 @@ const PodcastPlayer = () => {
         <MdClose
           className="text-red-500 cursor-pointer"
           fontSize={20}
-          onClick={() => {setClosePlayer(true),setAudio(undefined)}}
+          onClick={() => {
+            setClosePlayer(true);
+            setAudio(undefined);
+          }}
         />
       </div>
       <section className="glassmorphism-black flex h-[112px] w-full items-center justify-between px-4 max-md:justify-center max-md:gap-5 md:px-12">
