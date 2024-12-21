@@ -50,7 +50,7 @@ const GenerateThumbnail = ({
     try {
       const file = new File([blob], fileName, { type: "image/png" });
       const uploaded = await startUpload([file]);
-      const storageId = (uploaded[0].response as any).storageId;
+      const storageId = (uploaded[0].response).storageId;
       setImageStorageId(storageId);
       const imageUrl = await getImageUrl({ storageId });
       setImage(imageUrl!);

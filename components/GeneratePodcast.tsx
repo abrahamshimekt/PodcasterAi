@@ -45,7 +45,7 @@ const useGeneratePodcast = ({
       const fileName = `podcast-${uuidv4()}.mp3`;
       const file = new File([blob], fileName, { type: "audio/mpeg" });
       const uploaded = await startUpload([file]);
-      const storageId = (uploaded[0].response as any).storageId;
+      const storageId = (uploaded[0].response).storageId;
       setAudioStorageId(storageId);
       const audioUrl = await getAudioUrl({ storageId });
       setAudio(audioUrl!);
