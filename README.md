@@ -15,7 +15,7 @@ bun dev
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 ## Project Overview
-### AI-Powered Podcast Assistant(PodcaterAi)
+### AI-Powered Podcast Assistant(PodcasterAi)
 PodcasterAi leverages cutting-edge generative AI technologies to revolutionize podcast creation, making it faster, smarter, and more engaging for creators:
 
 - AI-Driven Podcast Audio Creation: Generate high-quality podcast audio using advanced Hugging Face Text-to-Speech (TTS) models. Choose from various model types to perfectly suit your podcast’s tone and style.
