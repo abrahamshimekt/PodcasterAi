@@ -22,7 +22,7 @@ const PodcastDetails = ({
   const similarPodcasts = useQuery(api.podcasts.getPodcastByVoiceType, {
     podcastId,
   });
-  const {user} = useUser();
+  const { user } = useUser();
   const isOwner = user?.id === podcast?.authorId;
   if (!similarPodcasts || !podcast) return <LoaderSpinner />;
 
@@ -40,9 +40,10 @@ const PodcastDetails = ({
           <h2 className="text-16 font-bold text-white-1">{podcast?.views}</h2>
         </figure>
       </header>
-      <PodcastDetailPlayer isOwner={isOwner}
-      podcastId={podcast._id}
-      {...podcast}
+      <PodcastDetailPlayer
+        isOwner={isOwner}
+        podcastId={podcast._id}
+        {...podcast}
       />
       <p className="text-white-2 text-16 pb-8 pt-[45px] font-medium max-md:text-center">
         {podcast?.podcastDescription}
@@ -66,17 +67,19 @@ const PodcastDetails = ({
       <section className="mt-8 flex flex-col gap-5">
         <h1 className="text-20 font-bold  text-white-1">Similar Podcast</h1>
         {similarPodcasts && similarPodcasts.length > 0 ? (
-          similarPodcasts.map(
-            ({ _id, podcastTitle, podcastDescription, imageUrl }) => (
-              <PodcastCard
-                key={_id}
-                imgUrl={imageUrl!}
-                title={podcastTitle}
-                description={podcastDescription}
-                podcastId={_id}
-              />
-            )
-          )
+          <div className="podcast_grid">
+            {similarPodcasts.map(
+              ({ _id, podcastTitle, podcastDescription, imageUrl }) => (
+                <PodcastCard
+                  key={_id}
+                  imgUrl={imageUrl!}
+                  title={podcastTitle}
+                  description={podcastDescription}
+                  podcastId={_id}
+                />
+              )
+            )}
+          </div>
         ) : (
           <EmptyState
             title="No Similar podcasts found"
