@@ -1,12 +1,12 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import {  useEffect, useRef, useState } from "react";
 
 import { formatTime } from "@/lib/formatTime";
 import { cn } from "@/lib/utils";
 import { useAudio } from "@/providers/AudioProvider";
-
+import { MdClose } from "react-icons/md";
 import { Progress } from "./ui/progress";
 
 const PodcastPlayer = () => {
@@ -15,7 +15,7 @@ const PodcastPlayer = () => {
   const [duration, setDuration] = useState(0);
   const [isMuted, setIsMuted] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
-  const { audio } = useAudio();
+  const { audio,setAudio ,closePlayer,setClosePlayer } = useAudio();
 
   const togglePlayPause = () => {
     if (audioRef.current?.paused) {
@@ -95,16 +95,25 @@ const PodcastPlayer = () => {
 
   return (
     <div
-      className={cn("sticky bottom-0 left-0 flex size-full flex-col", {
-        hidden: !audio?.audioUrl || audio?.audioUrl === "",
-      })}
+      className={cn(
+        `${closePlayer ? "hidden" : "sticky bottom-0 left-0 flex size-full flex-col"}`,
+        {
+          hidden: !audio?.audioUrl || audio?.audioUrl === "",
+        }
+      )}
     >
-      {/* change the color for indicator inside the Progress component in ui folder */}
-      <Progress
-        value={(currentTime / duration) * 100}
-        className="w-full"
-        max={duration ||0.1}
-      />
+      <div className="flex">
+        <Progress
+          value={(currentTime / duration) * 100}
+          className="w-full"
+          max={duration}
+        />
+        <MdClose
+          className="text-red-500 cursor-pointer"
+          fontSize={20}
+          onClick={() => {setClosePlayer(true),setAudio(undefined)}}
+        />
+      </div>
       <section className="glassmorphism-black flex h-[112px] w-full items-center justify-between px-4 max-md:justify-center max-md:gap-5 md:px-12">
         <audio
           ref={audioRef}
@@ -116,7 +125,7 @@ const PodcastPlayer = () => {
         <div className="flex items-center gap-4 max-md:hidden">
           <Link href={`/podcast/${audio?.podcastId}`}>
             <Image
-              src={audio?.imageUrl || "/images/player1.png"}
+              src={audio?.imageUrl! || "/images/player1.png"}
               width={64}
               height={64}
               alt="player1"

@@ -43,27 +43,35 @@ const LeftSidebar = () => {
           );
         })}
       </div>
-      <SignedOut>
-        <div className="flex-center w-full pb-14 max-lg:px-4 lg:pr-8">
-          <Button
-            asChild
-            className="text-16 w-full bg-orange-1 font-extrabold hover:!bg-orange-600"
-          >
-            <Link href="/sign-in"> Sign in</Link>
-          </Button>
-        </div>
-      </SignedOut>
-      <SignedIn>
-        <div className="flex-center w-full pb-14 max-lg:px-4 lg:pr-8">
-          <Button
-         
-            className="text-16 w-full bg-orange-1 font-extrabold hover:!bg-orange-600"
-            onClick={() => signOut(() => router.push("/"))}
-          >
-            Log Out
-          </Button>
-        </div>
-      </SignedIn>
+
+      <div className="flex flex-col gap-2">
+        <a href="https://pollinations.ai/" target="_blank" className="text-orange-1 font-bold cursor-pointer">Pollination AI</a>
+        <a href="https://huggingface.co/models" target="_blank" className="text-orange-1 font-bold cursor-pointer">HuggingFace</a>
+        <a href="https://clerk.com/" target="_blank" className="text-orange-1 font-bold cursor-pointer">Clerk</a>
+        <a href="https://clerk.com/" target="_blank" className="text-orange-1 font-bold cursor-pointer">Convex</a>
+      </div>
+      <div>
+        <SignedOut>
+          <div className="flex-center w-full pb-14 max-lg:px-4 lg:pr-8">
+            <Button
+              asChild
+              className="text-16 w-full bg-orange-1 font-extrabold hover:!bg-orange-600"
+            >
+              <Link href="/sign-in"> Sign in</Link>
+            </Button>
+          </div>
+        </SignedOut>
+        <SignedIn>
+          <div className="flex-center w-full pb-14 max-lg:px-4 lg:pr-8">
+            <Button
+              className="text-16 w-full bg-orange-1 font-extrabold hover:!bg-orange-600"
+              onClick={() => signOut(() => router.push("/"))}
+            >
+              Log Out
+            </Button>
+          </div>
+        </SignedIn>
+      </div>
     </section>
   );
 };

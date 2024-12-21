@@ -12,7 +12,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className="relative flex flex-col">
+    <div className="relative h-screen flex flex-col">
       <main className="relative flex bg-black-3">
         <LeftSidebar />
 
@@ -29,6 +29,7 @@ export default function RootLayout({
             </div>
             <div className="flex flex-col md:pb-14">
               <Toaster />
+
               {children}
             </div>
           </div>
@@ -36,7 +37,8 @@ export default function RootLayout({
 
         <RightSidebar />
       </main>
-      <PodcastPlayer/>
+
+      <PodcastPlayer />
     </div>
   );
 }

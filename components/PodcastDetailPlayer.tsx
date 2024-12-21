@@ -23,7 +23,7 @@ const PodcastDetailPlayer = ({
 }: PodcastDetailPlayerProps) => {
   const router = useRouter();
   const [isDeleting, setisDeleting] = useState(false);
-  const { setAudio } = useAudio();
+  const { setAudio, setClosePlayer } = useAudio();
   const { toast } = useToast();
   const deletePodcast = useMutation(api.podcasts.deletePodcast);
   const handleDelete = async () => {
@@ -34,7 +34,7 @@ const PodcastDetailPlayer = ({
       });
       router.push("/");
     } catch (error) {
-      console.log("Error:",error)
+      console.log("Error:", error);
       toast({ title: "Error deleting podcast", variant: "destructive" });
     }
   };
@@ -46,6 +46,7 @@ const PodcastDetailPlayer = ({
       author,
       podcastId,
     });
+    setClosePlayer(false);
   };
   return (
     <div className="mt-6 flex w-full justify-between max-md:justify-center ">
