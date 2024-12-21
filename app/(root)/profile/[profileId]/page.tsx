@@ -7,7 +7,7 @@ import { api } from "@/convex/_generated/api";
 import { useQuery } from "convex/react";
 import React, { use } from "react";
 
-const page = ({ params }: { params: Promise<{ profileId: string }> }) => {
+const Page = ({ params }: { params: Promise<{ profileId: string }> }) => {
   const { profileId } = use(params);
   const user = useQuery(api.users.getUserById, { clerkId: profileId });
   const podcastsData = useQuery(api.podcasts.getPodcastsByAuthorId, {
@@ -53,4 +53,4 @@ const page = ({ params }: { params: Promise<{ profileId: string }> }) => {
   );
 };
 
-export default page;
+export default Page;
