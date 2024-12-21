@@ -17,7 +17,7 @@ const useGeneratePodcast = ({
   setAudioStorageId,
 }: GeneratePodcastProps) => {
   const { toast } = useToast();
-  const [isGenerating, setIsGenerating] = useState(false);
+  const [, setIsGenerating] = useState(false);
   const generateUploadUrl = useMutation(api.files.generateUploadUrl);
   const getAudioUrl = useMutation(api.podcasts.getUrl);
   const { startUpload } = useUploadFiles(generateUploadUrl);
