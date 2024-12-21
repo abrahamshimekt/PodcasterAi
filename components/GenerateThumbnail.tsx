@@ -37,6 +37,7 @@ const GenerateThumbnail = ({
       const blob = new Blob([response.data], { type: "image/png" });
       handleImage(blob, `thumbnail-${uuidv4}`);
     } catch (error) {
+      console.log("Error:",error);
       toast({
         title: "Error generating thumbnail",
         variant: "destructive",
@@ -56,6 +57,7 @@ const GenerateThumbnail = ({
       setIsImageloading(false);
       toast({ title: "Thumbnail generated successfully" });
     } catch (error) {
+      console.log(error)
       toast({
         title: "Error generating thumbnail",
         variant: "destructive",
@@ -72,6 +74,7 @@ const GenerateThumbnail = ({
       const blob = await file.arrayBuffer().then((ab) => new Blob([ab]));
       handleImage(blob, file.name);
     } catch (error) {
+      console.log(error)
       toast({
         title: "Error While Uploading",
         variant: "destructive",

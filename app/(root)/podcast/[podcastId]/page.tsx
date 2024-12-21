@@ -10,7 +10,6 @@ import LoaderSpinner from "@/components/LoaderSpinner";
 import PodcastCard from "@/components/PodcastCard";
 import EmptyState from "@/components/EmptyState";
 import { useUser } from "@clerk/nextjs";
-
 const PodcastDetails = ({
   params,
 }: {

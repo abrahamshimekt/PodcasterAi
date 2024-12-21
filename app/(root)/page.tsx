@@ -2,9 +2,9 @@
 import PodcastCard from "@/components/PodcastCard";
 import { api } from "@/convex/_generated/api";
 import { useQuery } from "convex/react";
-import React from "react";
+import React, { FC } from "react";
 
-const page = () => {
+const page:FC = () => {
   const trendingPodcasts = useQuery(api.podcasts.getTrendingPodcasts);
   return (
     <div className="mt-9 bg-black-1 flex flex-col gap-9">

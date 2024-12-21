@@ -13,6 +13,7 @@ export async function POST(req: Request) {
       },
     });
   } catch (error) {
+    console.log(error)
     return new NextResponse(
       JSON.stringify({ error: "Failed to fetch image" }),
       {

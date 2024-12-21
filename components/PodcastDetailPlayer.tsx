@@ -34,6 +34,7 @@ const PodcastDetailPlayer = ({
       });
       router.push("/");
     } catch (error) {
+      console.log("Error:",error)
       toast({ title: "Error deleting podcast", variant: "destructive" });
     }
   };
